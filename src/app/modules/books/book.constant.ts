@@ -1,12 +1,11 @@
-export const BookSearchableFields = [
-  'name',
-  'location',
-  'breed',
-  'label',
-  'category',
-];
+export const BookSearchableFields = ['title', 'genre', 'author'];
 
-export const BookFilterableFields = ['title', 'genre', 'publication'];
+export const BookFilterableFields = [
+  'title',
+  'genre',
+  'publication',
+  'searchTerm',
+];
 
 export const BookLocationEnum = [
   'Dhaka',
