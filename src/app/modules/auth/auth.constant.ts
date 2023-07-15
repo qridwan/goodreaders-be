@@ -1,1 +1,1 @@
-export const roleEnum = ['buyer', 'seller'];
+export const roleEnum = [];

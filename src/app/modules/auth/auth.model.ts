@@ -6,45 +6,19 @@ import { AuthModel, IUser } from './auth.interface';
 
 const AuthSchema = new Schema<IUser, AuthModel>(
   {
-    role: {
+    fullName: {
       type: String,
       required: true,
-    },
-    name: {
-      type: {
-        firstName: {
-          type: String,
-          required: true,
-        },
-        lastName: {
-          type: String,
-          required: true,
-        },
-      },
-      required: true,
-      _id: false,
     },
     password: {
       type: String,
       required: true,
       select: false,
     },
-    phoneNumber: {
+    email: {
       type: String,
       required: true,
       unique: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    budget: {
-      type: Number,
-      required: true,
-    },
-    income: {
-      type: Number,
-      required: false,
     },
   },
   {
@@ -60,12 +34,9 @@ const AuthSchema = new Schema<IUser, AuthModel>(
 );
 
 AuthSchema.statics.isUserExist = async function (
-  phoneNumber: string
-): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role' | 'id'> | null> {
-  return await Auth.findOne(
-    { phoneNumber },
-    { password: 1, role: 1, phoneNumber: 1, id: 1 }
-  );
+  email: string
+): Promise<Pick<IUser, 'email' | 'password'> | null> {
+  return await Auth.findOne({ email }, { password: 1, email: 1, id: 1 });
 };
 
 AuthSchema.statics.isPasswordMatched = async function (
