@@ -4,11 +4,11 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import {
-  ILoginAdmin,
-  ILoginAdminResponse,
+  ILogin,
+  ILoginResponse,
   IRefreshTokenResponse,
-} from '../admin/admin.interface';
-import { IUser } from './auth.interface';
+  IUser,
+} from './auth.interface';
 import { Auth } from './auth.model';
 
 const signUpUser = async (user: IUser): Promise<IUser | null> => {
@@ -17,9 +17,7 @@ const signUpUser = async (user: IUser): Promise<IUser | null> => {
   return newUser;
 };
 
-const loginUser = async (
-  payload: ILoginAdmin
-): Promise<ILoginAdminResponse> => {
+const loginUser = async (payload: ILogin): Promise<ILoginResponse> => {
   const { email, password } = payload;
 
   const isUserExist = await Auth.isUserExist(email);
