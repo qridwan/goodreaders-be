@@ -12,6 +12,6 @@ router.post(
   WishlistController.addWishlist
 );
 router.get('/', auth(), WishlistController.getWishlists);
-// router.delete('/:id', auth(), WishlistController.deleteWishlist);
+router.delete('/:id', auth(), WishlistController.deleteWishlist);
 
 export const WishlistRoutes = router;

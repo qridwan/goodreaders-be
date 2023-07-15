@@ -24,18 +24,18 @@ const getWishlists = async (id: string): Promise<IWishlist[] | null> => {
   return result;
 };
 
-// const deleteWishlist = async (
-//   id: string,
-//   userID: string
-// ): Promise<IWishlist | null> => {
-//   const isExist = await Wishlist.findOne({ _id: id, addedBy: userID });
+const deleteWishlist = async (
+  id: string,
+  userID: string
+): Promise<IWishlist | null> => {
+  const isExist = await Wishlist.findOne({ _id: id, userId: userID });
 
-//   if (!isExist) {
-//     throw new ApiError(httpStatus.NOT_FOUND, 'Wishlist not found!');
-//   }
-//   const result = await Wishlist.findByIdAndDelete(id);
-//   return result;
-// };
+  if (!isExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Wishlist not found!');
+  }
+  const result = await Wishlist.findByIdAndDelete(id);
+  return result;
+};
 
 // const updateWishlist = async (
 //   id: string,
@@ -64,4 +64,5 @@ const getWishlists = async (id: string): Promise<IWishlist[] | null> => {
 export const WishlistService = {
   addWishlist,
   getWishlists,
+  deleteWishlist,
 };

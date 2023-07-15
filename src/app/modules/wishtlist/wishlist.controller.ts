@@ -20,22 +20,6 @@ const addWishlist: RequestHandler = catchAsync(
   }
 );
 
-// const getAllWishlists = catchAsync(async (req: Request, res: Response) => {
-//   const filters = pick(req.query, WishlistFilterableFields);
-
-//   const paginationOptions = pick(req.query, paginationFields);
-
-//   const result = await WishlistService.getAllWishlists(filters, paginationOptions);
-
-//   sendResponse<IWishlist[]>(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Wishlists retrieved successfully',
-//     meta: result.meta,
-//     data: result.data,
-//   });
-// });
-
 const getWishlists = catchAsync(async (req: Request, res: Response) => {
   const { _id: id }: any = req.user;
 
@@ -49,36 +33,22 @@ const getWishlists = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// const updateWishlist = catchAsync(async (req: Request, res: Response) => {
-//   const id = req.params.id;
-//   const updatedData = req.body;
-//   const { _id: userId }: any = req.user;
+const deleteWishlist = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const { _id: userId }: any = req.user;
 
-//   const result = await WishlistService.updateWishlist(id, updatedData, userId);
+  const result = await WishlistService.deleteWishlist(id, userId);
 
-//   sendResponse<IWishlist>(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Wishlist updated successfully',
-//     data: result,
-//   });
-// });
-
-// const deleteWishlist = catchAsync(async (req: Request, res: Response) => {
-//   const id = req.params.id;
-//   const { _id: userId }: any = req.user;
-
-//   const result = await WishlistService.deleteWishlist(id, userId);
-
-//   sendResponse<IWishlist>(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Wishlist deleted successfully',
-//     data: result,
-//   });
-// });
+  sendResponse<IWishlist>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book successfully removed from wishlist',
+    data: result,
+  });
+});
 
 export const WishlistController = {
   addWishlist,
   getWishlists,
+  deleteWishlist,
 };
