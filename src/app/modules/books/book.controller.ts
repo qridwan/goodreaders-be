@@ -51,6 +51,18 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const getGenreList = catchAsync(async (req: Request, res: Response) => {
+  //   const id = req.params.id;
+
+  const result = await BookService.getGenreList();
+
+  sendResponse<string[] | any>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Genre retrieved successfully',
+    data: result,
+  });
+});
 
 const updateBook = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
@@ -87,4 +99,5 @@ export const BookController = {
   getSingleBook,
   updateBook,
   deleteBook,
+  getGenreList,
 };

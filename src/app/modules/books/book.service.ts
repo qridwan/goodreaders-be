@@ -18,6 +18,16 @@ const getSingleBook = async (id: string): Promise<IBook | null> => {
   const result = await Book.findOne({ _id: id }).populate('addedBy');
   return result;
 };
+const getGenreList = async (): Promise<string[] | null> => {
+  try {
+    const result = await Book.distinct('genre');
+    return result as string[];
+  } catch (error) {
+    // Handle the error, if necessary
+    console.error(error);
+    return null;
+  }
+};
 
 const deleteBook = async (
   id: string,
@@ -119,4 +129,5 @@ export const BookService = {
   getSingleBook,
   updateBook,
   deleteBook,
+  getGenreList,
 };
