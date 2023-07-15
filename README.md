@@ -26,9 +26,13 @@
 
 # Books
 
-- [GET all books] (https://goodreaders-api.vercel.app/api/v1/book?searchTerm=Dr)
+- [GET all books] (https://goodreaders-api.vercel.app/api/v1/book)
 
-![Headers](./.ss/all_books_header.png)
+- [Search books] (https://goodreaders-api.vercel.app/api/v1/book?searchTerm=Dr)
+
+- [Filter books by genre] (https://goodreaders-api.vercel.app/api/v1/book?genre=education)
+
+- [Filter books by publication] (https://goodreaders-api.vercel.app/api/v1/book?publication=2020)
 
 - [GET sigle book] (https://goodreaders-api.vercel.app/api/v1/book/64b2fcb08e4a4d3ea5c02d6f)
 
