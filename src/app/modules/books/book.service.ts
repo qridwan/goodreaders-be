@@ -15,7 +15,7 @@ const createBook = async (payload: IBook): Promise<IBook | null> => {
 };
 
 const getSingleBook = async (id: string): Promise<IBook | null> => {
-  const result = await Book.findOne({ _id: id }).populate('seller');
+  const result = await Book.findOne({ _id: id }).populate('addedBy');
   return result;
 };
 

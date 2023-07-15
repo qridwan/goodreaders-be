@@ -11,8 +11,8 @@ router.post(
   auth(),
   BookController.createBook
 );
-router.get('/:id', auth(), BookController.getSingleBook);
-router.get('/', auth(), BookController.getAllBooks);
+router.get('/:id', BookController.getSingleBook);
+router.get('/', BookController.getAllBooks);
 router.delete('/:id', auth(), BookController.deleteBook);
 router.patch(
   '/:id',
