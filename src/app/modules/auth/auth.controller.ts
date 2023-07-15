@@ -4,11 +4,7 @@ import httpStatus from 'http-status';
 import config from '../../../config';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import {
-  ILoginAdminResponse,
-  IRefreshTokenResponse,
-} from '../admin/admin.interface';
-import { IUser } from './auth.interface';
+import { ILoginResponse, IRefreshTokenResponse, IUser } from './auth.interface';
 import { AuthService } from './auth.service';
 
 const signUpUser: RequestHandler = catchAsync(
@@ -39,7 +35,7 @@ const userLogin = catchAsync(async (req: Request, res: Response) => {
 
   res.cookie('refreshToken', refreshToken, cookieOptions);
 
-  sendResponse<ILoginAdminResponse>(res, {
+  sendResponse<ILoginResponse>(res, {
     statusCode: 200,
     success: true,
     message: 'User loggedin successfully!',
