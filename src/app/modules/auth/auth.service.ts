@@ -68,12 +68,12 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
     throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Refresh Token');
   }
 
-  const { phoneNumber } = verifiedToken;
+  const { email } = verifiedToken;
 
   // tumi delete hye gso  kintu tumar refresh token ase
   // checking deleted user's refresh token
 
-  const isUserExist = await Auth.isUserExist(phoneNumber);
+  const isUserExist = await Auth.isUserExist(email);
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
   }
