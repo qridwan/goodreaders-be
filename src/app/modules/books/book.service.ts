@@ -21,9 +21,9 @@ const getSingleBook = async (id: string): Promise<IBook | null> => {
 
 const deleteBook = async (
   id: string,
-  sellerId: string
+  userID: string
 ): Promise<IBook | null> => {
-  const isExist = await Book.findOne({ _id: id, seller: sellerId });
+  const isExist = await Book.findOne({ _id: id, addedBy: userID });
 
   if (!isExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Book not found!');
