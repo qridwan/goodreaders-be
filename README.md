@@ -2,7 +2,7 @@
 
 #### API URL : https://goodreaders-api.vercel.app/api/v1
 
-#### FRONTEND URL : https://goodreaders.vercel.app/api/v1
+#### FRONTEND URL : https://goodreaders.vercel.app/
 
 ## [POSTMAN DOCUMENTATION](https://documenter.getpostman.com/view/15074292/2s946fdsdf)
 
