@@ -1,10 +1,12 @@
-# Goodreaders Book catelog Express Server
+#### Goodreaders Book catelog Express Server
 
-# API URL : https://goodreaders-api.vercel.app/api/v1
+#### API URL : https://goodreaders-api.vercel.app/api/v1
+
+#### FRONTEND URL : https://goodreaders.vercel.app/api/v1
 
 ## [POSTMAN DOCUMENTATION](https://documenter.getpostman.com/view/15074292/2s946fdsdf)
 
-#### Authentication
+# Authentication
 
 - [POST SIGN UP] (https://goodreaders-api.vercel.app/api/v1/auth/signup)
 
@@ -22,7 +24,7 @@
 
 - [POST refresh token] (https://goodreaders-api.vercel.app/api/v1/auth/refresh-token)
 
-#### Books
+# Books
 
 - [GET all books] (https://goodreaders-api.vercel.app/api/v1/book?searchTerm=Dr)
 
@@ -66,7 +68,7 @@
 
   - [GET reviews] (https://goodreaders-api.vercel.app/api/v1/review/64b2f390e1ca0a499e9f76a2)
 
-#### Wishlist (BONUS PART):
+# Wishlist (BONUS PART):
 
 - [POST add wishlist] (https://goodreaders-api.vercel.app/api/v1/wishlist)
 
@@ -85,7 +87,7 @@
 
   ![HEADERs](./.ss/auth_header.png)
 
-#### Reading List (BONUS PART):
+# Reading List (BONUS PART):
 
 - [POST add ReadingList] (https://goodreaders-api.vercel.app/api/v1/reading)
 
