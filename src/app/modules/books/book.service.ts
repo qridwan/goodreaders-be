@@ -122,6 +122,14 @@ const getAllBooks = async (
     data: result,
   };
 };
+const getFeatured = async (): Promise<IBook[]> => {
+  const result = await Book.find()
+    .sort({ createdAt: 'desc' })
+    .populate('addedBy')
+    .limit(10);
+
+  return result;
+};
 
 export const BookService = {
   createBook,
@@ -130,4 +138,5 @@ export const BookService = {
   updateBook,
   deleteBook,
   getGenreList,
+  getFeatured,
 };

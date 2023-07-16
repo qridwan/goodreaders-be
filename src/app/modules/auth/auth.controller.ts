@@ -4,7 +4,7 @@ import httpStatus from 'http-status';
 import config from '../../../config';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import { ILoginResponse, IRefreshTokenResponse, IUser } from './auth.interface';
+import { ILoginResponse, IRefreshTokenResponse } from './auth.interface';
 import { AuthService } from './auth.service';
 
 const signUpUser: RequestHandler = catchAsync(
@@ -12,7 +12,7 @@ const signUpUser: RequestHandler = catchAsync(
     const userData = req.body;
     const result = await AuthService.signUpUser(userData);
 
-    sendResponse<IUser>(res, {
+    sendResponse<ILoginResponse>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Users created successfully',

@@ -21,6 +21,7 @@ export type AuthModel = {
 export type ILoginResponse = {
   accessToken: string;
   refreshToken?: string;
+  user?: IUser;
 };
 
 export type IRefreshTokenResponse = {

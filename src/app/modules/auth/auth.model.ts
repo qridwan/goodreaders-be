@@ -36,7 +36,10 @@ const AuthSchema = new Schema<IUser, AuthModel>(
 AuthSchema.statics.isUserExist = async function (
   email: string
 ): Promise<Pick<IUser, 'email' | 'password'> | null> {
-  return await Auth.findOne({ email }, { password: 1, email: 1, id: 1 });
+  return await Auth.findOne(
+    { email },
+    { password: 1, email: 1, id: 1, fullName: 1 }
+  );
 };
 
 AuthSchema.statics.isPasswordMatched = async function (

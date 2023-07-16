@@ -13,6 +13,7 @@ router.post(
 );
 
 router.get('/allGenre', BookController.getGenreList);
+router.get('/featured', BookController.getFeatured);
 
 router.get('/:id', BookController.getSingleBook);
 router.get('/', BookController.getAllBooks);

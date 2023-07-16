@@ -38,6 +38,16 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
     data: result.data,
   });
 });
+const getFeatured = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.getFeatured();
+
+  sendResponse<IBook[]>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Featured books retrieved successfully',
+    data: result,
+  });
+});
 
 const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
@@ -100,4 +110,5 @@ export const BookController = {
   updateBook,
   deleteBook,
   getGenreList,
+  getFeatured,
 };

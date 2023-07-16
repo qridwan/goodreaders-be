@@ -11,10 +11,26 @@ import {
 } from './auth.interface';
 import { Auth } from './auth.model';
 
-const signUpUser = async (user: IUser): Promise<IUser | null> => {
+const signUpUser = async (user: IUser): Promise<ILoginResponse | null> => {
   const newUser = await Auth.create(user);
 
-  return newUser;
+  const accessToken = jwtHelpers.createToken(
+    { fullName: newUser.fullName, _id: newUser.id, email: newUser.email },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string
+  );
+
+  const refreshToken = jwtHelpers.createToken(
+    { fullName: newUser.fullName, _id: newUser.id, email: newUser.email },
+    config.jwt.refresh_secret as Secret,
+    config.jwt.refresh_expires_in as string
+  );
+
+  return {
+    accessToken,
+    refreshToken,
+    user: newUser,
+  };
 };
 
 const loginUser = async (payload: ILogin): Promise<ILoginResponse> => {
@@ -37,7 +53,7 @@ const loginUser = async (payload: ILogin): Promise<ILoginResponse> => {
 
   const { fullName, email: uEmail, id } = isUserExist;
   const accessToken = jwtHelpers.createToken(
-    { fullName, _id: id, phoneNumber: uEmail },
+    { _id: id, fullName, email: uEmail },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
@@ -51,6 +67,7 @@ const loginUser = async (payload: ILogin): Promise<ILoginResponse> => {
   return {
     accessToken,
     refreshToken,
+    user: isUserExist,
   };
 };
 
